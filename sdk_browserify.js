@@ -1,17 +1,17 @@
 const browserify = require("browserify")
 const fs = require('fs')
-browserify("./dom_front.js", {
+browserify("./sdk_wrapper.js", {
   debug : true,
-  standalone: "xtra",
-
+  standalone: "XtraVision",
 }).transform(['babelify', { compact: false }], {
   global: true,                                  
-  // ignore: [/\/node_modules\/(?!@vizuaalog\/)/],     
   presets: [ 
     "@babel/preset-env",
     "@babel/preset-react"] 
-  }).bundle().on('error', function (err) {
+  })
+  .bundle().on('error', function (err) {
     console.log(err);  
-  }).pipe(fs.createWriteStream('bundle/xtravision.js')).on('end', function(){
+  })
+  .pipe(fs.createWriteStream('demo-app/xtravision-js-sdk.js')).on('end', function(){
     console.log( 'finished writing the browserify file' );
   });
