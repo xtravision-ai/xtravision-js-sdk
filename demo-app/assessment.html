@@ -12,33 +12,30 @@
 
     <div id="XtraVisionAssessmentID"></div>
 
-
-    <div>
-
-        <!-- Optional: some overlay text to describe the video -->
-        <div class="content">
-            <h1>Server Response</h1>
-            <p id="XtraVisionAssessmentResponseID">Lorem ipsum...</p>
-            <!-- Use a button to pause/play the video with JavaScript -->
-            <button id="myBtn" onclick="document.location='index.html'">Stop Assessment</button>
-
-        </div>
-  
+    <!-- Optional: some overlay text to describe the video -->
+    <div class="content">
+        <h1>Server Response</h1>
+        <p id="XtraVisionAssessmentResponseID">Lorem ipsum...</p>
+        <!-- Use a button to pause/play the video with JavaScript -->
+        <button id="myBtn" onclick="document.location='index.html'">Stop Assessment</button>
     </div>
-    
 
 </body>
+
 <script src="/xtravision-js-sdk.js"> </script>
 <script>
     const React = XtraVision.React;
     const ReactDOM = XtraVision.ReactDOM;
     const XtraVisionAssessmentPage = XtraVision.AssessmentPage
 
-    const assessment_name = "SQUATS"; // enter your assessment name here
-    const auth_token =  "__AUTH-Token__"; // Get Auth Token from Your Server
-    
-    let assessment_config = {} // Put assessment specific configuration
-    let user_config = {} // Put assessment specific configuration
+    // enter your assessment name here
+    const assessment_name = "SQUATS"; 
+    // Get Auth Token from Your Server
+    const auth_token =  "__AUTH_TOKEN__"; 
+
+    // Put assessment specific configuration. Check documentation for further details
+    let assessment_config = {} 
+    let user_config = {} 
 
     // adjust these as per time based assessment requirement 
     assessment_config = {
@@ -54,11 +51,6 @@
     
     // CSS: which will be applied on video element
     // Write CSS which is compatible for ReactJS
-    const videoElementCSS1 = {
-        minHeight: "100vH", 
-        minWidth: "100vW",
-        position: "fixed"
-    }
     const videoElementCSS = {
         position: "fixed",
         right: 0,

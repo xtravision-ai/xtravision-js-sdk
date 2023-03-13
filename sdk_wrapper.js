@@ -79,7 +79,6 @@ const AppContainer = ({ videoElementRef, libData }) => {
     );
   }
 
-
 const AssessmentPage = ({connectionData, requestData, libData} ) => {
   
   const videoElementRef = useRef(null);
@@ -96,8 +95,6 @@ const AssessmentPage = ({connectionData, requestData, libData} ) => {
         libData = {libData}
       />
     </AssessmentProvider>
-
-    
   );
 };
 
