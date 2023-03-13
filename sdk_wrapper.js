@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import React, {Component} from 'react' 
 const ReactDOM  = require('react-dom')
 
-
 import {
   useXtraVisionAssessmentContext,
   XtraVisionAssessmentProvider as AssessmentProvider,
@@ -16,10 +15,6 @@ import {
 //   );
 
 
-// import {
-//   useXtraVisionAssessmentContext,
-//   XtraVisionAssessmentProvider,
-// } from "xtravision-react";
 
 // type AppContainerProps = {
 //   videoElementRef: any;
@@ -32,30 +27,33 @@ const AppContainer = ({
   assessmentName,
   displayText,
   setDisplayText,
+  onServerResponse
 }) => {
-  const { lastJsonMessage, isCamOn, setIsCamOn } =
-    useXtraVisionAssessmentContext();
 
-  if (lastJsonMessage?.error) {
-    console.log("lastJsonMessage: ", lastJsonMessage?.error);
-  } 
-  else {
-    console.log("lastJsonMessage: ", lastJsonMessage?.data);
+  const { lastJsonMessage, isCamOn, setIsCamOn } = useXtraVisionAssessmentContext();
 
-    // const additional_response = lastJsonMessage?.data?.additional_response;
-    // const assessment = lastJsonMessage?.data?.assessment;
+  onServerResponse(lastJsonMessage);
 
-    // switch (assessment) {
-    //   // add more cases as per the assessment 
-    //   case 'GLUTE_BRIDGE':
-    //   case 'PUSH_UPS':
-    //   case 'JUMPING_SQUAT':
-    //   case 'BURPEES':
-    //   default:
-    //     setDisplayText(`In-Pose: ${additional_response?.in_pose ?? 'false'} Reps-Count: ${additional_response?.reps?.total ?? 0} `);
-    // }
+  // if (lastJsonMessage?.error) {
+  //   console.log("lastJsonMessage: ", lastJsonMessage?.error);
+  // } 
+  // else {
+  //   console.log("lastJsonMessage: ", lastJsonMessage?.data);
 
-  }
+  //   // const additional_response = lastJsonMessage?.data?.additional_response;
+  //   // const assessment = lastJsonMessage?.data?.assessment;
+
+  //   // switch (assessment) {
+  //   //   // add more cases as per the assessment 
+  //   //   case 'GLUTE_BRIDGE':
+  //   //   case 'PUSH_UPS':
+  //   //   case 'JUMPING_SQUAT':
+  //   //   case 'BURPEES':
+  //   //   default:
+  //   //     setDisplayText(`In-Pose: ${additional_response?.in_pose ?? 'false'} Reps-Count: ${additional_response?.reps?.total ?? 0} `);
+  //   // }
+
+  // }
     
   
 
@@ -134,7 +132,7 @@ const AppContainer = ({
   );
 };
 
-const AssessmentPage = ({connectionData, requestData} ) => {
+const AssessmentPage = ({connectionData, requestData, libData} ) => {
   const [displayText, setDisplayText] = useState('');
 
   const videoElementRef = useRef(null);
@@ -174,6 +172,7 @@ const AssessmentPage = ({connectionData, requestData} ) => {
         assessmentName={connectionData.assessment_name}
         displayText={displayText}
         setDisplayText={setDisplayText}
+        onServerResponse = {libData.onServerResponse}
       />
     </AssessmentProvider>
 

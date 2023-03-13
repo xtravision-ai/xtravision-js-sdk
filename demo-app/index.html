@@ -10,10 +10,7 @@
 <body>
     <h1>XtraVision JS Bundle Example App</h1>
 
-    <div id="XtraVisionAssessmentID">
-        <!-- <video ref={videoElementRef} style="border:1px solid red;" ></video>
-        <div id="AppContainer"></div> -->
-    </div>
+    <div id="XtraVisionAssessmentID"></div>
 
 </body>
 <script src="/xtravision-js-sdk.js"> </script>
@@ -22,13 +19,12 @@
     const ReactDOM = XtraVision.ReactDOM;
     const React = XtraVision.React;
     const XtraVisionAssessmentPage = XtraVision.AssessmentPage
-    console.log(Component);
-
+    // console.log(Component);
 
     const assessment_name = "SQUATS"; // enter your assessment name here
-    const auth_token =  "__AUTH_TOKEN__";
-    let assessment_config = {}
-    let user_config = {}
+    const auth_token =  "__AUTH_TOKEN__"; // Get Auth Token from Your Server
+    let assessment_config = {} // Put assessment specific configuration
+    let user_config = {} // Put assessment specific configuration
 
     // adjust these as per time based assessment requirement 
     assessment_config = {
@@ -43,7 +39,7 @@
         session_id: null
     }
     const requestData = {
-        isPreJoin: false
+        isPreJoin: false   // if you need to configure education screen then use this, else set to False
     }
 
     // const props =  {
@@ -52,13 +48,25 @@
     //     requestData,
     // }
 
-    // const XtraVisionAssessmentProvider = Component(props)
+    const onServerResponse = function(response) {
+        console.log("response", response)
+    }
+    libData = {onServerResponse}
+
+    const props = {
+        connectionData, 
+        requestData,
+        libData
+    }
 
     // const xComponent = Component()
     ReactDOM.render(
-        React.createElement(XtraVisionAssessmentPage, {connectionData, requestData }),
+        React.createElement(XtraVisionAssessmentPage, props),
         document.getElementById('XtraVisionAssessmentID')
     );
+
+
+    console.log("lastJsonMessage: ", XtraVision.useXtraVisionAssessmentContext);
 
   </script>
 </html>
