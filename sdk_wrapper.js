@@ -1,62 +1,30 @@
-import { useRef, useState } from "react";
-import React, {Component} from 'react' 
+import { useEffect, useRef } from "react";
+import React from 'react' 
 const ReactDOM  = require('react-dom')
 
-import {
-  useXtraVisionAssessmentContext,
-  XtraVisionAssessmentProvider as AssessmentProvider,
-} from "@xtravision/xtravision-react";
+import { useXtraVisionAssessmentContext, XtraVisionAssessmentProvider as AssessmentProvider } from "@xtravision/xtravision-react";
 
+const AppContainer = ({ videoElementRef, libData }) => {
 
+  const { lastJsonMessage, setIsCamOn } = useXtraVisionAssessmentContext();
 
-// ReactDOM.render(
-//       xtra.React.createElement(XtraVisionAssessmentProvider, props),
-//       document.getElementById('XtraVisionAssessmentProvider')
-//   );
+  // response forward to frontend
+  if (libData.onServerResponse) {
+    onServerResponse(lastJsonMessage)
+  };
 
+  useEffect(() => {
+    // Camera will be start once the SDK will be loaded
+    startCamera();
 
-
-// type AppContainerProps = {
-//   videoElementRef: any;
-//   assessmentName: string;
-//   setDisplayText: any;
-//   displayText: string;
-// };
-const AppContainer = ({
-  videoElementRef,
-  assessmentName,
-  displayText,
-  setDisplayText,
-  onServerResponse
-}) => {
-
-  const { lastJsonMessage, isCamOn, setIsCamOn } = useXtraVisionAssessmentContext();
-
-  onServerResponse(lastJsonMessage);
-
-  // if (lastJsonMessage?.error) {
-  //   console.log("lastJsonMessage: ", lastJsonMessage?.error);
-  // } 
-  // else {
-  //   console.log("lastJsonMessage: ", lastJsonMessage?.data);
-
-  //   // const additional_response = lastJsonMessage?.data?.additional_response;
-  //   // const assessment = lastJsonMessage?.data?.assessment;
-
-  //   // switch (assessment) {
-  //   //   // add more cases as per the assessment 
-  //   //   case 'GLUTE_BRIDGE':
-  //   //   case 'PUSH_UPS':
-  //   //   case 'JUMPING_SQUAT':
-  //   //   case 'BURPEES':
-  //   //   default:
-  //   //     setDisplayText(`In-Pose: ${additional_response?.in_pose ?? 'false'} Reps-Count: ${additional_response?.reps?.total ?? 0} `);
-  //   // }
-
-  // }
-    
+    // onExitPage: close camera and stop WebCam
+    // need to test this
+    return () => {
+      stopCamera()
+      setIsCamOn(false)
+    }
+  }, [])
   
-
   const startCamera = async () => {
     try {
       await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
@@ -85,7 +53,7 @@ const AppContainer = ({
       videoElementRef.current.play();
       setIsCamOn(true);
     } catch (err) {
-      console.log(err);
+      console.error(err);
       setIsCamOn(false);
     }
   };
@@ -102,63 +70,19 @@ const AppContainer = ({
     videoElementRef.current.srcObject = null;
   };
 
-  return (
-    <div style={{ backgroundColor: "#D3D3D3", padding: "30px" }}>
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <button
-          onClick={() => {
-            startCamera();
-          }}
-          disabled={isCamOn}
-        >
-          START
-        </button>
-        <button
-          onClick={() => {
-            setIsCamOn(false);
-            stopCamera();
-          }}
-          disabled={!isCamOn}
-        >
-          STOP
-        </button>
-      </div>
+  if (!libData.videoElementCSS) {
+    libData.videoElementCSS = {minHeight: "100vh", minWidth: "100vw"}
+  }
 
-      <div>
-        <div>Assessment: {assessmentName} </div>
-        <div>{displayText}</div>
-      </div>
-    </div>
-  );
-};
+  return (
+      <video ref={videoElementRef} style={ libData.videoElementCSS} />
+    );
+  }
+
 
 const AssessmentPage = ({connectionData, requestData, libData} ) => {
-  const [displayText, setDisplayText] = useState('');
-
+  
   const videoElementRef = useRef(null);
-  // const isPreJoin = false;
-  // const assessment_name = "SQUATS"; // enter your assessment name here
-  // const auth_token = process.env.REACT_APP_XTRA_AUTH_TOKEN ? process.env.REACT_APP_XTRA_AUTH_TOKEN : "__AUTH_TOKEN__";
-  // let assessment_config = {}
-  // let user_config = {}
-
-  // // adjust these as per time based assessment requirement 
-  // assessment_config = {
-  //   reps_threshold: 5,
-  //   grace_time_threshold: 20,
-  // }
-
-  // const connectionData = {
-  //   assessment_name,
-  //   auth_token,
-  //   assessment_config,
-  //   user_config,
-  //   session_id: null
-  // }
-
-  // const requestData = {
-  //   isPreJoin
-  // }
 
   return (
     <AssessmentProvider
@@ -166,13 +90,10 @@ const AssessmentPage = ({connectionData, requestData, libData} ) => {
       connectionData={connectionData}
       requestData={requestData}
     >
-      <video ref={videoElementRef} style={{ border: "1px solid red" }} />
       <AppContainer
         videoElementRef={videoElementRef}
-        assessmentName={connectionData.assessment_name}
-        displayText={displayText}
-        setDisplayText={setDisplayText}
-        onServerResponse = {libData.onServerResponse}
+        connectionData={connectionData}
+        libData = {libData}
       />
     </AssessmentProvider>
 
@@ -180,5 +101,4 @@ const AssessmentPage = ({connectionData, requestData, libData} ) => {
   );
 };
 
-
-export { AssessmentPage, AssessmentProvider, useXtraVisionAssessmentContext, Component, React, ReactDOM};
+export { AssessmentPage, AssessmentProvider, useXtraVisionAssessmentContext, React, ReactDOM};

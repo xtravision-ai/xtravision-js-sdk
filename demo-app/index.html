@@ -8,65 +8,9 @@
     <title>Document</title>
 </head>
 <body>
+    
     <h1>XtraVision JS Bundle Example App</h1>
-
-    <div id="XtraVisionAssessmentID"></div>
+    <button onclick="document.location='assessment.html'">Start Assessment</button>
 
 </body>
-<script src="/xtravision-js-sdk.js"> </script>
-<script>
-    const Component = XtraVision.Component;
-    const ReactDOM = XtraVision.ReactDOM;
-    const React = XtraVision.React;
-    const XtraVisionAssessmentPage = XtraVision.AssessmentPage
-    // console.log(Component);
-
-    const assessment_name = "SQUATS"; // enter your assessment name here
-    const auth_token =  "__AUTH_TOKEN__"; // Get Auth Token from Your Server
-    let assessment_config = {} // Put assessment specific configuration
-    let user_config = {} // Put assessment specific configuration
-
-    // adjust these as per time based assessment requirement 
-    assessment_config = {
-        reps_threshold: 5,
-        grace_time_threshold: 20,
-    }
-    const connectionData = {
-        assessment_name,
-        auth_token,
-        assessment_config,
-        user_config,
-        session_id: null
-    }
-    const requestData = {
-        isPreJoin: false   // if you need to configure education screen then use this, else set to False
-    }
-
-    // const props =  {
-    //     videoElementRef:  null, //React.useRef(null),
-    //     connectionData,
-    //     requestData,
-    // }
-
-    const onServerResponse = function(response) {
-        console.log("response", response)
-    }
-    libData = {onServerResponse}
-
-    const props = {
-        connectionData, 
-        requestData,
-        libData
-    }
-
-    // const xComponent = Component()
-    ReactDOM.render(
-        React.createElement(XtraVisionAssessmentPage, props),
-        document.getElementById('XtraVisionAssessmentID')
-    );
-
-
-    console.log("lastJsonMessage: ", XtraVision.useXtraVisionAssessmentContext);
-
-  </script>
 </html>
