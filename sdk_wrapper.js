@@ -4,7 +4,7 @@ const ReactDOM  = require('react-dom')
 
 import { useXtraVisionAssessmentContext, XtraVisionAssessmentProvider as AssessmentProvider } from "@xtravision/xtravision-react";
 
-const AppContainer = ({ videoElementRef, libData }) => {
+const AppContainer = ({ videoElementRef, canvasElementRef = null, libData }) => {
 
   const { lastJsonMessage, setIsCamOn } = useXtraVisionAssessmentContext();
 
@@ -73,24 +73,44 @@ const AppContainer = ({ videoElementRef, libData }) => {
   if (!libData.videoElementCSS) {
     libData.videoElementCSS = {minHeight: "100vh", minWidth: "100vw"}
   }
+  
+  if (!libData.canvasElementCSS) {
+    libData.canvasElementCSS = {
+      height: '100vh', //({ innerHeight }: any) => innerHeight,
+      width: '70%', // ({ innerWidth }: any) => innerWidth,
+      transform: 'rotateY(180deg)',
+      position: 'absolute',
+      // objectFit: 'cover', //
+      left: 0,
+      top: 0,
+      borderRadius: '40px 0px 0px 4px',
+    }
+  }
 
   return (
-      <video ref={videoElementRef} style={ libData.videoElementCSS} />
+      <>
+        <video ref={videoElementRef} style={libData.videoElementCSS} />
+        {/* <canvas ref={canvasElementRef} style={libData.canvasElementCSS}></canvas> */}
+      </>
+
     );
   }
 
 const AssessmentPage = ({connectionData, requestData, libData} ) => {
   
   const videoElementRef = useRef(null);
-
+  const canvasRef = useRef(null);
+  
   return (
     <AssessmentProvider
       videoElementRef={videoElementRef}
+      // canvasElementRef={canvasRef}
       connectionData={connectionData}
       requestData={requestData}
     >
       <AppContainer
         videoElementRef={videoElementRef}
+        canvasElementRef={canvasRef}
         connectionData={connectionData}
         libData = {libData}
       />

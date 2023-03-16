@@ -4,10 +4,20 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build:sdk": "node sdk_browserify.js"
+    "build:sdk": "node sdk_browserify.js",
+    "build:cli": "browserify sdk_wrapper.js --standalone XtraVision --transform babelify  --debug -o bundle.js"
   },
   "dependencies": {
-    "@xtravision/xtravision-react": "^2.1.0"
+    "@xtravision/xtravision-react": "2.2.1"
+  },
+  "IMP Comment ====>>" : " Below dependency use for development purpose at local-end, where `xtravision-react` hosted at local-end below defined path.",
+  "___dependencies": {
+    "@xtravision/xtravision-react": "file:./../github/xtravision-react/dist/cjs",
+    "@mediapipe/camera_utils": "^0.3.1640029074",
+    "@mediapipe/pose": "^0.5.1635988162",
+    "lodash": "^4.17.20",
+    "react-use-websocket": "^2.9.1",
+    "web-vitals": "^2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
@@ -24,7 +34,6 @@
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
-    ] 
+    ]
   }
-  
 }
