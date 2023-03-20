@@ -5,7 +5,13 @@
     <meta name="viewport" 
           content="width=device-width,
                    initial-scale=1.0">
-    <title>Document</title>
+    <title>Xtravision</title>
+    <style>
+        body{
+            margin: 0
+        }
+    </style>
+    
 </head>
 <body>
     <!-- <h1>XtraVision JS Bundle Example App</h1> -->
@@ -52,11 +58,10 @@
     // CSS: which will be applied on video element
     // Write CSS which is compatible for ReactJS
     const videoElementCSS = {
-        position: "fixed",
-        right: 0,
-        bottom: 0,
-        minWidth: "100vw",
-        minHeight: "100vh"
+        height: '100%', //({ innerHeight }: any%) => innerHeight,
+        width: '100%', // ({ innerWidth }: any) => innerWidth,
+        transform: 'rotateY(180deg)',
+        position: 'absolute'
     }
 
     // prepare required data object
