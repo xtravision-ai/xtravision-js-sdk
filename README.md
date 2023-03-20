@@ -3,10 +3,12 @@
 
 Using browserify module, we have converted `@xtravision/xtravision-react` module to a browser friendly version of the CommonJS module.
 
-### How to Setup and Configure JS-SDK in your web-page?  (documentation in-progress) 
+---
+
+### How to Setup and Configure JS-SDK in your web-page?  
  (See `demo-app` for reference )  
 
- 1. Load JS-SDK with absolute path.
+ 1. Load JS-SDK with absolute path. (Download `demo-app/xtravision-js-sdk.js` file)
     ```javascript
     <script src="/xtravision-js-sdk.js"> </script>
     ```
@@ -18,7 +20,7 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
     const React = XtraVision.React;
     const XtraVisionAssessmentPage = XtraVision.AssessmentPage
     ```
-3. Configure all required variable (TODO)
+3. Configure all required variable
 
    ```javascript
     // enter your assessment name here
@@ -86,6 +88,8 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
    ```html
    <div id="XtraVisionAssessmentID"></div>
    ```
+
+**IMP**: Once you load script file and do above steps, video automatically start after loading. 
 
 
 Note: You can get XtraVision server response into callback method `onServerResponse`. Kindly configure it as per your demand
