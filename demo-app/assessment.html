@@ -52,11 +52,10 @@
     // CSS: which will be applied on video element
     // Write CSS which is compatible for ReactJS
     const videoElementCSS = {
-        position: "fixed",
-        right: 0,
-        bottom: 0,
-        minWidth: "100vw",
-        minHeight: "100vh"
+        height: '100%', //({ innerHeight }: any%) => innerHeight,
+        width: '100%', // ({ innerWidth }: any) => innerWidth,
+        transform: 'rotateY(180deg)',
+        position: 'absolute'
     }
 
     // prepare required data object
