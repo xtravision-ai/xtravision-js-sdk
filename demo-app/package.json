@@ -4,11 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "lite-server": "^2.6.1"
+    "lite-server": "^2.6.1",
+    "uglify-js": "^3.17.4"
   },
   "scripts": {
-    "lite" : "lite-server",
-    "start": "yarn lite"
+    "lite": "lite-server",
+    "start": "yarn lite",
+    "minify": "yarn run uglifyjs xtravision-js-sdk.js -c -m -o dist/xtravision-js-sdk.min.js"
   }
-
 }
