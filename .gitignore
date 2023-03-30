@@ -107,3 +107,5 @@ dist
 .DS_Store
 
 dist*
+
+/demo-app/xtravision-js-sdk.min.js
