@@ -1,16 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" 
-          content="width=device-width,
-                   initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,
+                   initial-scale=1.0"
+    />
     <title>Xtravision</title>
-</head>
-<body>
-    
-    <h1>XtraVision JS Bundle Example App</h1>
-    <button onclick="document.location='assessment.html'">Start Assessment</button>
+  </head>
+  <body>
+    <form>
+      <h1>XtraVision JS Bundle Example App</h1>
+      <!-- <button onclick="document.location='assessment.html'" type="submit">
+        Start Assessment
+      </button> -->
 
-</body>
+      <button type="submit" id="submit">Start Assessment</button>
+
+      <br />
+      <br />
+
+      <input type="radio" id="skeletonTrue" name="skeleton" value="true" />
+      <label for="skeletonTrue">Enable Skeleton</label>
+      <input type="radio" id="skeletonFalse" name="skeleton" value="false" />
+      <label for="skeletonFalse">disable Skeleton</label>
+    </form>
+    <br />
+    <input placeholder="assessment..." id="assessmentField" type="text" />
+    <input placeholder="authToken..." id="authTokenField" type="text" />
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    let params = {};
+
+    const updateParams = (key, value) => {
+      params[key] = value;
+    };
+
+    document.getElementsByName("skeleton").forEach((e) => {
+      e.addEventListener("click", () => {
+        let selectedValue = $("input[name=skeleton]:checked").val();
+        updateParams("skeletonEnabled", selectedValue);
+      });
+    });
+
+    document
+      .getElementById("assessmentField")
+      .addEventListener("input", (e) => {
+        updateParams("assessment", e.target.value);
+      });
+
+    document.getElementById("authTokenField").addEventListener("input", (e) => {
+      updateParams("authTokenField", e.target.value);
+    });
+
+    document.getElementById("submit").addEventListener("click", (e) => {
+      e.preventDefault();
+      let url = "assessment.html?";
+      for (let item in params) {
+        if (params.hasOwnProperty(item)) {
+          url += item + "=" + params[item] + "&";
+        }
+      }
+      window.location.href = url;
+    });
+  </script>
 </html>

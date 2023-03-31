@@ -1,17 +1,23 @@
 import { useEffect, useRef } from "react";
-import React from 'react' 
-const ReactDOM  = require('react-dom')
+import React from "react";
+const ReactDOM = require("react-dom");
 
-import { useXtraVisionAssessmentContext, XtraVisionAssessmentProvider as AssessmentProvider } from "@xtravision/xtravision-react";
+import {
+  useXtraVisionAssessmentContext,
+  XtraVisionAssessmentProvider as AssessmentProvider,
+} from "@xtravision/xtravision-react";
 
-const AppContainer = ({ videoElementRef, canvasElementRef = null, libData }) => {
-
+const AppContainer = ({
+  videoElementRef,
+  canvasElementRef = null,
+  libData,
+}) => {
   const { lastJsonMessage, setIsCamOn } = useXtraVisionAssessmentContext();
 
   // response forward to frontend
   if (libData.onServerResponse) {
-    onServerResponse(lastJsonMessage)
-  };
+    onServerResponse(lastJsonMessage);
+  }
 
   useEffect(() => {
     // Camera will be start once the SDK will be loaded
@@ -20,11 +26,11 @@ const AppContainer = ({ videoElementRef, canvasElementRef = null, libData }) => 
     // onExitPage: close camera and stop WebCam
     // need to test this
     return () => {
-      stopCamera()
-      setIsCamOn(false)
-    }
-  }, [])
-  
+      stopCamera();
+      setIsCamOn(false);
+    };
+  }, []);
+
   const startCamera = async () => {
     try {
       await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
@@ -71,40 +77,43 @@ const AppContainer = ({ videoElementRef, canvasElementRef = null, libData }) => 
   };
 
   if (!libData.videoElementCSS) {
-    libData.videoElementCSS = {minHeight: "100vh", minWidth: "100vw"}
+    libData.videoElementCSS = { minHeight: "100vh", minWidth: "100vw" };
   }
-  
+
   if (!libData.canvasElementCSS) {
     libData.canvasElementCSS = {
-      height: '100vh', //({ innerHeight }: any) => innerHeight,
-      width: '70%', // ({ innerWidth }: any) => innerWidth,
-      transform: 'rotateY(180deg)',
-      position: 'absolute',
+      height: "100vh", //({ innerHeight }: any) => innerHeight,
+      width: "100%", // ({ innerWidth }: any) => innerWidth,
+      transform: "rotateY(180deg)",
+      position: "absolute",
       // objectFit: 'cover', //
       left: 0,
       top: 0,
-      borderRadius: '40px 0px 0px 4px',
-    }
+      borderRadius: "40px 0px 0px 4px",
+    };
   }
 
   return (
-      <>
-        <video ref={videoElementRef} style={libData.videoElementCSS} />
-        {/* <canvas ref={canvasElementRef} style={libData.canvasElementCSS}></canvas> */}
-      </>
+    <>
+      <video ref={videoElementRef} style={libData.videoElementCSS} />
+      {libData?.skeletonEnabled && (
+        <canvas
+          ref={canvasElementRef}
+          style={libData.canvasElementCSS}
+        ></canvas>
+      )}
+    </>
+  );
+};
 
-    );
-  }
-
-const AssessmentPage = ({connectionData, requestData, libData} ) => {
-  
+const AssessmentPage = ({ connectionData, requestData, libData }) => {
   const videoElementRef = useRef(null);
   const canvasRef = useRef(null);
-  
+
   return (
     <AssessmentProvider
       videoElementRef={videoElementRef}
-      // canvasElementRef={canvasRef}
+      canvasElementRef={canvasRef}
       connectionData={connectionData}
       requestData={requestData}
     >
@@ -112,10 +121,16 @@ const AssessmentPage = ({connectionData, requestData, libData} ) => {
         videoElementRef={videoElementRef}
         canvasElementRef={canvasRef}
         connectionData={connectionData}
-        libData = {libData}
+        libData={libData}
       />
     </AssessmentProvider>
   );
 };
 
-export { AssessmentPage, AssessmentProvider, useXtraVisionAssessmentContext, React, ReactDOM};
+export {
+  AssessmentPage,
+  AssessmentProvider,
+  useXtraVisionAssessmentContext,
+  React,
+  ReactDOM,
+};

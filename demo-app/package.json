@@ -8,6 +8,6 @@
   },
   "scripts": {
     "lite": "lite-server",
-    "start": "yarn lite"
+    "start": "BROWSER=none yarn lite"
   }
 }
