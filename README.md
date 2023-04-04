@@ -8,10 +8,16 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
 ### How to Setup and Configure JS-SDK in your web-page?  
  (See `demo-app` for reference )  
 
- 1. Load JS-SDK with absolute path. (Download `demo-app/xtravision-js-sdk.js` file)
+ 1. Load JS-SDK with absolute path. (Download `xtravision-js-sdk..min.js` file)
     ```javascript
-    <script src="/xtravision-js-sdk.js"> </script>
+    <script src="xtravision-js-sdk..min.js"> </script>
     ```
+    OR use `jsdelivr` CDN Service:
+    
+     ```javascript
+        <script src="https://cdn.jsdelivr.net/gh/xtravision-ai/xtravision-js-SDK@1.0.0/xtravision-js-sdk.min.js"> </script>
+    ```
+
    
  2. All required things are available under the `XtraVision` namespace which is available globally after adding JS SDK. 
 
