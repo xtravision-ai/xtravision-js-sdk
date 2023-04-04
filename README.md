@@ -12,6 +12,12 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
     ```javascript
     <script src="xtravision-js-sdk..min.js"> </script>
     ```
+    OR use `jsdelivr` CDN Service:
+    
+     ```javascript
+        <script src="https://cdn.jsdelivr.net/gh/xtravision-ai/xtravision-js-SDK@1.0.0/xtravision-js-sdk.min.js"> </script>
+    ```
+
    
  2. All required things are available under the `XtraVision` namespace which is available globally after adding JS SDK. 
 
