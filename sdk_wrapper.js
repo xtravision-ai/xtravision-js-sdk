@@ -9,9 +9,11 @@ const AppContainer = ({ videoElementRef, canvasElementRef = null, libData }) => 
   const { lastJsonMessage, setIsCamOn } = useXtraVisionAssessmentContext();
 
   // response forward to frontend
-  if (libData.onServerResponse) {
-    onServerResponse(lastJsonMessage)
-  };
+  if (libData.onServerResponse && typeof libData.onServerResponse === 'function') {
+    libData.onServerResponse(lastJsonMessage)
+  } else {
+    console.error("`onServerResponse` must be method")
+  }
 
   useEffect(() => {
     // Camera will be start once the SDK will be loaded

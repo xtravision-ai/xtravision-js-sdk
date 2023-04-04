@@ -14,8 +14,8 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
     ```
     OR use `jsdelivr` CDN Service:
     
-     ```javascript
-        <script src="https://cdn.jsdelivr.net/gh/xtravision-ai/xtravision-js-SDK@1.0.0/xtravision-js-sdk.min.js"> </script>
+    ```javascript
+    <script src="https://cdn.jsdelivr.net/gh/xtravision-ai/xtravision-js-SDK@1.1.0/xtravision-js-sdk.min.js"> </script>
     ```
 
    
