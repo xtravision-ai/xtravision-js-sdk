@@ -24,6 +24,7 @@
       <h1>Server Response</h1>
       <p id="XtraVisionAssessmentResponseID">Lorem ipsum...</p>
       <!-- Use a button to pause/play the video with JavaScript -->
+      <button id="myBtnVideo" onclick="videoToggle()">Start Video</button>
       <button id="myBtn" onclick="document.location='index.html'">
         Stop Assessment
       </button>
@@ -37,11 +38,34 @@
     const XtraVisionAssessmentPage = XtraVision.AssessmentPage;
 
     const searchParams = new URLSearchParams(window.location.search);
-
     let skeletonEnabled =
-      (searchParams.get("skeletonEnabled") == "true" ? true : false) ?? fasle;
+      (searchParams.get("skeletonEnabled") == "true" ? true : false) ?? false;
     let assessment_name = searchParams.get("assessment") ?? "SQUATS";
     let auth_token = searchParams.get("authTokenField");
+    let start_video = searchParams.get("startVideo") ?? false;
+
+    const videobtnElement = document.getElementById("myBtnVideo");
+
+    // function videoToggle() {
+    //   start_video = !start_video;
+    //   if (start_video) {
+    //     videobtnElement.innerText = "Stop Video";
+    //     videobtnElement.addEventListener("click", (e) => {
+    //       e.preventDefault();
+    //       window.location.href = queryString + "startVideo=false";
+    //     });
+    //   } else {
+    //     videobtnElement.innerText = "Start Video";
+    //     videobtnElement.addEventListener("click", (e) => {
+    //       e.preventDefault();
+    //       window.location.href = queryString + "startVideo=true";
+    //     });
+    //   }
+    // }
+
+    const videoToggle = () => {
+      
+    };
 
     // Put assessment specific configuration. Check documentation for further details
     let assessment_config = {};
@@ -105,10 +129,11 @@
     };
 
     // Render XtraVision React Component
-    ReactDOM.render(
-      React.createElement(XtraVisionAssessmentPage, props),
-      document.getElementById("XtraVisionAssessmentID")
-    );
+    startVideo &&
+      ReactDOM.render(
+        React.createElement(XtraVisionAssessmentPage, props),
+        document.getElementById("XtraVisionAssessmentID")
+      );
   </script>
 
   <style>

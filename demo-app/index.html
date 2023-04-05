@@ -27,7 +27,11 @@
       <label for="skeletonFalse">disable Skeleton</label>
     </form>
     <br />
-    <input placeholder="assessment..." id="assessmentField" type="text" />
+    <label for="assessmentField">Enter assessment name: </label>
+    <br />
+    <input placeholder="eg: SQUATS" id="assessmentField" type="text" />
+    <br />
+    <br />
     <input placeholder="authToken..." id="authTokenField" type="text" />
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -57,13 +61,18 @@
 
     document.getElementById("submit").addEventListener("click", (e) => {
       e.preventDefault();
+      let checked = true;
       let url = "assessment.html?";
+      if (!params.authTokenField) {
+        alert("auth token cannot be empty!");
+        checked = false;
+      }
       for (let item in params) {
         if (params.hasOwnProperty(item)) {
           url += item + "=" + params[item] + "&";
         }
       }
-      window.location.href = url;
+      if (checked) window.location.href = url;
     });
   </script>
 </html>
