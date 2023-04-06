@@ -6,7 +6,7 @@
   "scripts": {
     "build:sdk": "node sdk_browserify.js",
     "build:cli": "browserify sdk_wrapper.js --standalone XtraVision --transform babelify  --debug -o bundle.js",
-    "start:demo": " cd demo-app && yarn install && yarn start"
+    "start:demo": "yarn build:sdk && cd demo-app && yarn install && yarn start"
   },
   "dependencies": {
     "@xtravision/xtravision-react": "2.2.1"
