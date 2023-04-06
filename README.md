@@ -60,12 +60,15 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
         minHeight: "100vh"
     }
 
+    // IMP: modify canvas CSS which fit your video element for proper alignment
     const canvasElementCSS = {
-      height: "100vh",
-      width: "100%", 
+      height: "99%",
+      width: "65%", 
       transform: "rotateY(180deg)",
       position: "absolute",
+      padding:'0 17%'
     };
+
 
     // prepare required data object
     const connectionData = {
@@ -116,16 +119,14 @@ Note: You can get XtraVision server response into callback method `onServerRespo
 ### (For Developer) How to convert xtravision-react module to CommonJs/VanillaJS module. 
 
    1. Clone this repo and install all required dependencies using `yarn install`.  
-   2. Build SDK using `yarn build:sdk`.  
-   3. New updatedSDK will be created at `demo-app` folder with name `xtravision-js-sdk.js`   
+   2. Build SDK and run demo app using `yarn start:demo`.  
+   3. New updatedSDK will be created at root folder with name `xtravision-js-sdk.min.js`   
 
 
 
 ----
 
 
-### TODO:
-
-- minified JS file => configuration to create debug and prod version 
-- How can we expose startVideo/stopVideo via API
-- Do some experiments and explorer more configuration for html5 video-element
+### Known-Issues:
+- Skeleton-view does not draw the head
+- Skeleton-view sometimes seems to be a bit slow.
