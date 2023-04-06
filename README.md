@@ -48,7 +48,6 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
     const onServerResponse = function(response) {
         // Handle server response here. It will call in every second in ideal situation.
         console.log("response", response);
-        //document.getElementById('XtraVisionAssessmentResponseID').innerHTML = JSON.stringify(response)
     }
     
     // CSS: which will be applied on video element
@@ -60,6 +59,13 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
         minWidth: "100vw",
         minHeight: "100vh"
     }
+
+    const canvasElementCSS = {
+      height: "100vh",
+      width: "100%", 
+      transform: "rotateY(180deg)",
+      position: "absolute",
+    };
 
     // prepare required data object
     const connectionData = {
@@ -73,7 +79,12 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
         isPreJoin: false   // if you need to configure education screen then use this, else set to False
     }
 
-    const libData = {onServerResponse, videoElementCSS}
+    const libData = {
+        onServerResponse, 
+        videoElementCSS,
+        canvasElementCSS,
+        isSkeletonEnabled: true // if you need to draw skeleton, else false
+    }
 
     const props = {
         connectionData, 

@@ -84,8 +84,8 @@ const AppContainer = ({
 
   if (!libData.canvasElementCSS) {
     libData.canvasElementCSS = {
-      height: "100vh", //({ innerHeight }: any) => innerHeight,
-      width: "100%", // ({ innerWidth }: any) => innerWidth,
+      height: "100vh",
+      width: "100%", 
       transform: "rotateY(180deg)",
       position: "absolute",
       // objectFit: 'cover', //
@@ -98,7 +98,7 @@ const AppContainer = ({
   return (
     <>
       <video ref={videoElementRef} style={libData.videoElementCSS} />
-      {libData?.skeletonEnabled && (
+      {libData?.isSkeletonEnabled && (
         <canvas
           ref={canvasElementRef}
           style={libData.canvasElementCSS}
