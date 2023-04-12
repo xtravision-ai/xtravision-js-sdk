@@ -1,16 +1,18 @@
 {
-  "name": "xtravision-js-sdk",
-  "version": "1.2.0",
-  "main": "index.js",
+  "name": "@xtravision/js-sdk",
+  "version": "2.1.0",
+  "Comment": "Don't, Change main and files key. These are using in npm module.",
+  "main": "xtravision-js-sdk.js",
+  "files": [
+    "xtravision-js-sdk.min.js"
+  ],
   "license": "MIT",
   "scripts": {
-    "build:sdk": "node sdk_browserify.js",
-    "build:cli": "browserify sdk_wrapper.js --standalone XtraVision --transform babelify  --debug -o bundle.js",
-    "start:demo": "yarn build:sdk && cd demo-app && yarn install && yarn start"
+    "build:sdk": "node src/browserify.js",
+    "//build:cli": "browserify sdk_wrapper.js --standalone XtraVision --transform babelify  --debug -o bundle.js",
+    "start:demo": "yarn install && yarn build:sdk && cd examples/demo-app && yarn install && yarn start"
   },
-  "dependencies": {
-    "@xtravision/xtravision-react": "2.2.1"
-  },
+  "dependencies": {},
   "IMP Comment ====>>": " Below dependency use for development purpose at local-end, where `xtravision-react` hosted at local-end below defined path.",
   "___dependencies": {
     "@xtravision/xtravision-react": "file:./../github/xtravision-react/dist/cjs",
@@ -21,6 +23,7 @@
     "web-vitals": "^2.1.0"
   },
   "devDependencies": {
+    "@xtravision/xtravision-react": "2.2.1",
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
@@ -37,5 +40,19 @@
       "@babel/preset-env",
       "@babel/preset-react"
     ]
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "Pose Tracking",
+    "xtravision.ai",
+    "xtravision"
+  ],
+  "tags": [
+    "react",
+    "xtravision",
+    "ai",
+    "pose"
+  ]
 }

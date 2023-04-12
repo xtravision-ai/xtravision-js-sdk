@@ -1,0 +1,24 @@
+{
+  "name": "demo-marko-app",
+  "description": "The default Marko starter app",
+  "version": "2.1.0",
+  "type": "module",
+  "dependencies": {
+    "@marko/vite": "^2.3.14",
+    "@xtravision/js-sdk": "^2.0.0",
+    "marko": "^5"
+  },
+  "engines": {
+    "npm": ">=8.9.0",
+    "node": ">=18.1.0"
+  },
+  "devDependencies": {
+    "@marko/run": "^0.1.6"
+  },
+  "private": true,
+  "scripts": {
+    "build": "marko-run build",
+    "dev": "marko-run",
+    "start": "marko-run preview"
+  }
+}
