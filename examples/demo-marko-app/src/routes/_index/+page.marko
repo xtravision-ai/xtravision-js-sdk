@@ -1,0 +1,22 @@
+<xtravision-assessment 
+
+        connectionData = {
+          assessment_name: 'SQUATS',
+          auth_token: '__AUTH_TOKEN__',
+          assessment_config: {},
+          user_config: {},
+          session_id: null,
+        }
+
+        requestData = {
+          isPreJoin: false, 
+        }
+
+        libData = {
+          onServerResponse:  (resp) => console.log(resp),
+          videoElementCSS: { height: "100%",  width: "100%",  transform: "rotateY(180deg)", position: "absolute" },
+          canvasElementCSS: { height: "100%", width: "100%",  transform: "rotateY(180deg)", position: "absolute" },
+          isSkeletonEnabled: true,
+        }
+        
+      />

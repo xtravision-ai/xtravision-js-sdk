@@ -1,0 +1,37 @@
+
+import XtraVision from '@xtravision/js-sdk';
+
+<!-- Reference https://markojs.com/docs/class-components/#lifecycle-events -->
+class {
+    // onCreate(input, out) {}
+    // onInput(input, out) { }
+    // onRender(out) { }
+    // onUpdate() { }
+
+    onMount() { 
+        const { connectionData, requestData, libData } = this.input;
+
+        const container = this.getEl("XtraVisionAssessmentID");
+        const props = { connectionData, requestData, libData }
+        console.log("==========>>>", this.input)
+
+        // TODO: Proper handling required for onServerResponse
+        console.log( "Before hack", libData.onServerResponse)
+        // hack
+        libData.onServerResponse = console.log
+        console.log( "After hack", libData.onServerResponse)
+
+        const reactElement =  XtraVision.React.createElement(XtraVision.AssessmentPage, props);
+        // final render on dom
+        XtraVision.ReactDOM.render(reactElement,container);    
+    }
+    // TODO: test onDestroy
+    onDestroy() {
+        const container = this.getEl("XtraVisionAssessmentID");
+        XtraVision.ReactDOM.unmountComponentAtNode(container);
+     }
+}
+
+<div ref="XtraVisionAssessmentID" key="XtraVisionAssessmentID"></div>
+
+ 
