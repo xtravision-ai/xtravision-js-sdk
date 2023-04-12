@@ -10,7 +10,7 @@
   "scripts": {
     "build:sdk": "node src/browserify.js",
     "//build:cli": "browserify sdk_wrapper.js --standalone XtraVision --transform babelify  --debug -o bundle.js",
-    "start:demo": "yarn install && yarn build:sdk && cd demo-app && yarn install && yarn start"
+    "start:demo": "yarn install && yarn build:sdk && cd examples/demo-app && yarn install && yarn start"
   },
   "dependencies": {
     

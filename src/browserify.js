@@ -4,6 +4,7 @@ const terser = require("terser");
 const path = require('path')
 
 const ROOT_PATH = path.join(__dirname, '..')
+const DEMO_APP_PATh = path.join(ROOT_PATH, 'examples/demo-app')
 
 
 // reference: https://github.com/browserify/browserify#browserifyfiles--opts
@@ -37,7 +38,7 @@ browserify(path.join(ROOT_PATH, "src/wrapper.js"), {
 
         stream1.on("close", () => {
           // copy new file in demo app
-          fs.copyFileSync(newFilePath, path.join(ROOT_PATH, 'demo-app/'+newCreatedMinifiedFile))
+          fs.copyFileSync(newFilePath, path.join(DEMO_APP_PATh,  newCreatedMinifiedFile))
         })
         
       });
