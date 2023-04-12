@@ -15,7 +15,7 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
     OR use `jsdelivr` CDN Service:
     
     ```javascript
-    <script src="https://cdn.jsdelivr.net/gh/xtravision-ai/xtravision-js-SDK@1.2.0/xtravision-js-sdk.min.js"> </script>
+    <script src="https://cdn.jsdelivr.net/gh/xtravision-ai/xtravision-js-SDK@2.1.0/xtravision-js-sdk.min.js"> </script>
     ```
     if you are using any JS framework or bundling your web-app and want to use `npm` repo then kindly use below command to install JS-SDK.
     ```bash
