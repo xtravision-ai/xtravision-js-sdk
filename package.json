@@ -1,6 +1,6 @@
 {
   "name": "@xtravision/js-sdk",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "Comment": "Don't, Change main and files key. These are using in npm module.",
   "main": "xtravision-js-sdk.js",
   "files": [
