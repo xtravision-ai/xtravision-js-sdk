@@ -6,7 +6,7 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
 ---
 
 ### How to Setup and Configure JS-SDK in your web-page?  
- (See `demo-app` for reference )  
+ (See `examples/demo-app` for reference )  
 
  1. Load JS-SDK with absolute path. (Download `xtravision-js-sdk..min.js` file)
     ```javascript
@@ -17,7 +17,12 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
     ```javascript
     <script src="https://cdn.jsdelivr.net/gh/xtravision-ai/xtravision-js-SDK@1.2.0/xtravision-js-sdk.min.js"> </script>
     ```
-
+    if you are using any JS framework or bundling your web-app and want to use `npm` repo then kindly use below command to install JS-SDK.
+    ```bash
+    npm install @xtravision/js-sdk
+    OR
+    yarn add  @xtravision/js-sdk
+    ```
    
  2. All required things are available under the `XtraVision` namespace which is available globally after adding JS SDK. 
 
@@ -114,6 +119,17 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
 
 Note: You can get XtraVision server response into callback method `onServerResponse`. Kindly configure it as per your demand
 
+
+----
+
+
+### For MarkoJs Support:
+
+We have created a wrapper to support MarKoJS framework. Please refer `exmaples/demo-amrko-app` for details.  
+-  Wrapper Component location: `examples/demo-marko-app/src/components/xtravision-assessment.marko`
+- Use in Page: `examples/demo-marko-app/src/routes/_index/+page.marko`
+
+
 ----
 
 ### (For Developer) How to convert xtravision-react module to CommonJs/VanillaJS module. 
@@ -122,11 +138,4 @@ Note: You can get XtraVision server response into callback method `onServerRespo
    2. Build SDK and run demo app using `yarn start:demo`.  
    3. New updatedSDK will be created at root folder with name `xtravision-js-sdk.min.js`   
 
-
-
 ----
-
-
-### Known-Issues:
-- Skeleton-view does not draw the head
-- Skeleton-view sometimes seems to be a bit slow.
