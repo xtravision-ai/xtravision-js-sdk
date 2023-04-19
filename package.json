@@ -1,11 +1,14 @@
 {
   "name": "@xtravision/js-sdk",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "Comment": "Don't, Change main and files key. These are using in npm module.",
   "main": "xtravision-js-sdk.js",
   "files": [
     "xtravision-js-sdk.min.js"
   ],
+  "engines": {
+    "node": ">=16.10.0"
+  },
   "license": "MIT",
   "scripts": {
     "build:sdk": "node src/browserify.js",
@@ -23,7 +26,7 @@
     "web-vitals": "^2.1.0"
   },
   "devDependencies": {
-    "@xtravision/xtravision-react": "2.2.1",
+    "@xtravision/xtravision-react": "^2.3.0",
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
