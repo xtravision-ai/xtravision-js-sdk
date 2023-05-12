@@ -21,11 +21,45 @@
 
     <!-- Optional: some overlay text to describe the video -->
     <div class="content">
-      <h1>Server Response</h1>
-      <p id="XtraVisionAssessmentResponseID">Wait a moment. Check the console if you don't see any response here within 30 seconds.</p>
+      <!-- <h1>Server Response</h1> -->
+      <!-- <p id="XtraVisionAssessmentResponseID">Wait a moment. Check the console if you don't see any response here within 30 seconds.</p> -->
       <button id="myBtn" onclick="history.back()">
         Back To Home Page
       </button>
+    </div>
+
+    <div class="stats-container">
+      <div class="stats">
+        <div>d1: </div>
+        <div id="d1">0.0</div>  
+      </div>
+      
+      <div class="stats">
+        <div>d2: </div>
+        <div id="d2">0.0</div>
+      </div>
+      
+      <div class="stats">
+        <div>d3: </div>
+            <div id="d3">0.0</div>
+      </div>
+     
+      <div class="stats">
+        <div>count1: </div>
+        <div id="count1">0</div>
+      </div>
+      
+      <div class="stats">
+        <div>count2: </div>
+        <div id="count2">0</div>
+      </div>
+
+     
+      <div class="stats">
+        <div>count3: </div>
+        <div id="count3">0</div>  
+      </div>
+          
     </div>
 
     <div class="repCounter">
@@ -57,13 +91,24 @@
 
     const onServerResponse = function (response) {
       // Handle server response here. It will call in every second in ideal situation.
-      console.log("response", response);
 
       if (response == null) {
         return ;
       }
-      document.getElementById("XtraVisionAssessmentResponseID").innerHTML =
-        JSON.stringify(response);
+
+      // hiding this for now
+      // document.getElementById("XtraVisionAssessmentResponseID").innerHTML =
+      //   JSON.stringify(response);
+
+      document.getElementById("d1").innerHTML = response?.data?.additional_response?.d1 ?? 0.0;
+      document.getElementById("d2").innerHTML = response?.data?.additional_response?.d2 ?? 0.0;
+      document.getElementById("d3").innerHTML = response?.data?.additional_response?.d3 ?? 0.0;
+      document.getElementById("count1").innerHTML = response?.data?.additional_response?.count_1 ?? 0.0;
+      document.getElementById("count2").innerHTML = response?.data?.additional_response?.count_2 ?? 0.0;
+      document.getElementById("count3").innerHTML = response?.data?.additional_response?.count_3 ?? 0.0;
+
+
+      console.log(JSON.stringify(response))
 
       document.getElementById("repCounterText").innerHTML = response?.data?.additional_response?.reps?.total !== undefined ?
         JSON.stringify(response?.data?.additional_response?.reps?.total) : 0;
@@ -132,7 +177,7 @@
     .content {
       position: fixed;
       bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
+      /* background: rgba(0, 0, 0, 0.5); */
       color: #f1f1f1;
       width: 100%;
       padding: 20px;
@@ -158,26 +203,43 @@
 
     .repCounter {
       border: solid;
-    border-color: white;
-    border-radius: 50px;
-    border-width: 3px;
-    background-color: #2196f3;
-    height: 80px;
-    width: 80px;
-    z-index: 999;
-    position: absolute;
-    right: 50px;
-    top: 100px;
+      border-color: white;
+      border-radius: 70px;
+      border-width: 3px;
+      background-color: #2196f3;
+      height: 110px;
+      width: 110px;
+      z-index: 999;
+      position: absolute;
+      right: 50px;
+      top: 100px;
     }
 
     #repCounterText {
       color: white;
-      font-size: 30px;
+      font-size: 40px;
       display: flex;
       justify-content: center;
       width: 100%;
       height: 100%;
       align-items: center;
+    }
+
+    .stats-container{
+      position: absolute;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      font-size: 25px;
+      gap: 20px;
+      padding: 40px;
+      background-color: #9796969c;
+    }
+
+    .stats {
+      display: flex;
+      flex-direction: row;
+      gap: 20px
     }
     
   </style>
