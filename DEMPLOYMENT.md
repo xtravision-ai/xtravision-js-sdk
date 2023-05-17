@@ -1,13 +1,17 @@
 # Prepare for release
 
-1. Merge all required branches into main branch.
-   2.Increase version as required in below files: (Always increase minor version on every release except some hot-fixes or major changes).
-   Example App. (example/pubspec.yaml)
-   SDk Version. (pubspec.yaml)
-2. Update CHANGELOG.md file.
-3. Commit all into main branch and follow below steps to publish js package.
+1. Merge all required changes/branches to dev branch.
+2. Increase version as required in below files: (Always increase
 
-# Publish Package
+   - Example App. (example/demo-app/package.json)
+   - SDk Version. (package.json)
+
+3. Update CHANGELOG.md file.
+4. Raise PR to main.
+5. Merge PR to main and follow below steps to publish JS package.
+
+
+# Publish Package(main branch)
 
 - From root directory
 
