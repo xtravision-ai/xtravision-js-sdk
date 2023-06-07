@@ -1,9 +1,11 @@
 # Prepare for release
 
 1. Merge all required changes/branches to dev branch.
-2. Increase version as required in below files: (Always increase
+2. Increase version as required in below files: (Always increase minor version)
 
-   - Example App. (example/demo-app/package.json)
+   - Example Apps. 
+    - example/demo-app/package.json
+    - example/demo-marko-app/package.json
    - SDk Version. (package.json)
 
 3. Update CHANGELOG.md file.

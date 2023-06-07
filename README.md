@@ -47,6 +47,7 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
     assessment_config = {
         reps_threshold: 5,
         grace_time_threshold: 20,
+        sets_threshold: -1, // -1 is default value & indicates disabled. 
     }
     
     // IMP: handle Xtra-Vision response here
