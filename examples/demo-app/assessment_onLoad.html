@@ -43,7 +43,9 @@
     let auth_token = searchParams.get("authToken");
     
     // Put assessment specific configuration. Check documentation for further details
-    let assessment_config = {};
+    let assessment_config = {
+      sets_threshold: -1 // set as -1 to disable sets
+    };
     let user_config = {};
 
     // adjust these as per time based assessment requirement
