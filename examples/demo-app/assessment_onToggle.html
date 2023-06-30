@@ -23,6 +23,7 @@
     <div class="content">
       <h1>Server Response</h1>
       <p id="XtraVisionAssessmentResponseID">Click on toggle button to start Video and Wait a moment.</p>
+      <p id="XtraVisionAssessmentKeyPointsID">Click on toggle button to start Video and Wait a moment.</p>
       <!-- Use a button to pause/play the video with JavaScript -->
       <button id="myBtnVideo" onclick="videoToggle()">Toggle Video</button>
       <button id="myBtn" onclick="history.back()">
@@ -52,7 +53,7 @@
       start_video = start_video == "true" ? "false" : "true" || "true";
       start_video == "true"
         ? searchParams.set("startVideo", "true")
-        : searchParams.set("startVideo", "false"); 
+        : searchParams.set("startVideo", "false");
 
       // Get the updated search string
       const newSearchString = searchParams.toString();
@@ -70,20 +71,23 @@
     assessment_config = {
       reps_threshold: 5,
       grace_time_threshold: 20,
+      sets_threshold: -1 // -1 is default value & indicates disabled.
     };
 
-    const onServerResponse = function (response) {
+    const onServerResponse = function (response, keyPoints) {
       // Handle server response here. It will call in every second in ideal situation.
       console.log("response", response);
       document.getElementById("XtraVisionAssessmentResponseID").innerHTML =
         JSON.stringify(response);
+      document.getElementById("XtraVisionAssessmentKeyPointsID").innerHTML =
+        JSON.stringify(keyPoints);
     };
 
     // CSS: which will be applied on video element
     // Write CSS which is compatible for ReactJS
     const videoElementCSS = {
-      height: "99%", 
-      width: "99%", 
+      height: "99%",
+      width: "99%",
       transform: "rotateY(180deg)",
       position: "absolute",
     };
@@ -91,12 +95,12 @@
     // modify this to fit your video element for proper alignment
     const canvasElementCSS = {
       height: "99%",
-      width: "65%", 
+      width: "65%",
       transform: "rotateY(180deg)",
       position: "absolute",
       padding:'0 17%'
     };
-    
+
     // prepare required data object
     const connectionData = {
       assessment_name,

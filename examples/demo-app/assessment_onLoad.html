@@ -23,6 +23,7 @@
     <div class="content">
       <h1>Server Response</h1>
       <p id="XtraVisionAssessmentResponseID">Wait a moment. Check the console if you don't see any response here within 30 seconds.</p>
+      <p id="XtraVisionAssessmentKeyPointsID">Wait a moment. Check the console if you don't see any response here within 30 seconds.</p>
       <button id="myBtn" onclick="history.back()">
         Back To Home Page
       </button>
@@ -41,7 +42,7 @@
       (searchParams.get("isSkeletonEnabled") == "true" ? true : false) ?? false;
     let assessment_name = searchParams.get("assessment") ?? "SQUATS";
     let auth_token = searchParams.get("authToken");
-    
+
     // Put assessment specific configuration. Check documentation for further details
     let assessment_config = {};
     let user_config = {};
@@ -50,9 +51,10 @@
     assessment_config = {
       reps_threshold: 5,
       grace_time_threshold: 20,
+      sets_threshold: -1 // -1 is default value & indicates disabled.
     };
 
-    const onServerResponse = function (response) {
+    const onServerResponse = function (response, keyPoints) {
       // Handle server response here. It will call in every second in ideal situation.
       console.log("response", response);
 
@@ -61,13 +63,15 @@
       }
       document.getElementById("XtraVisionAssessmentResponseID").innerHTML =
         JSON.stringify(response);
+      document.getElementById("XtraVisionAssessmentKeyPointsID").innerHTML =
+        JSON.stringify(keyPoints);
     };
 
     // CSS: which will be applied on video element
     // Write CSS which is compatible for ReactJS
     const videoElementCSS = {
-      height: "99%", 
-      width: "99%", 
+      height: "99%",
+      width: "99%",
       transform: "rotateY(180deg)",
       position: "absolute",
     };
@@ -75,7 +79,7 @@
     // modify this to fit your video element for proper alignment
     const canvasElementCSS = {
       height: "99%",
-      width: "65%", 
+      width: "65%",
       transform: "rotateY(180deg)",
       position: "absolute",
       padding:'0 17%'
