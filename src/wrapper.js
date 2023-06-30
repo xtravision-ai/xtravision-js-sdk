@@ -12,11 +12,11 @@ const AppContainer = ({
   canvasElementRef = null,
   libData,
 }) => {
-  const { lastJsonMessage, setIsCamOn } = useXtraVisionAssessmentContext();
+  const { lastJsonMessage, setIsCamOn, keyPoints } = useXtraVisionAssessmentContext();
 
   // response forward to frontend
   if (libData.onServerResponse && typeof libData.onServerResponse === 'function') {
-    libData.onServerResponse(lastJsonMessage)
+    libData.onServerResponse(lastJsonMessage, keyPoints);
   } else {
     console.error("`onServerResponse` must be method")
   }
@@ -85,7 +85,7 @@ const AppContainer = ({
   if (!libData.canvasElementCSS) {
     libData.canvasElementCSS = {
       height: "100vh",
-      width: "100%", 
+      width: "100%",
       transform: "rotateY(180deg)",
       position: "absolute",
       // objectFit: 'cover', //
