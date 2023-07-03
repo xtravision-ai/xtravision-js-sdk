@@ -36,6 +36,9 @@
     const ReactDOM = XtraVision.ReactDOM;
     const XtraVisionAssessmentPage = XtraVision.AssessmentPage;
 
+    const XtraVisionEventEmitter = XtraVision.XtraVisionEventEmitter
+    XtraVisionEventEmitter.on('onUserKeyPoints', (data) => {console.log(data);})
+
     const searchParams = new URLSearchParams(window.location.search);
     let isSkeletonEnabled =
       (searchParams.get("isSkeletonEnabled") == "true" ? true : false) ?? false;

@@ -121,6 +121,29 @@ Using browserify module, we have converted `@xtravision/xtravision-react` module
 Note: You can get XtraVision server response into callback method `onServerResponse`. Kindly configure it as per your demand
 
 
+### Get User's body Key-points:
+The Xtravision SDK provides an internal API that allows you to access live user body keypoints through the `XtraVisionEventEmitter` event emitter. The code below shows how to access keypoints. The data that is emitted by the event emitter has two values: timestamp keyPoints: 
+```javascript
+    {
+        timestamp, 
+        keyPoints: {
+                _TS_: { // landmarks capture time
+                    landmarks: [
+                        {x,y,z,visibility}
+                        ... 
+                        //33 length
+                        ]
+                    }
+                }
+    }
+```
+## How to use `XtraVisionEventEmitter`
+   ```javascript
+    const XtraVisionEventEmitter = XtraVision.XtraVisionEventEmitter
+    XtraVisionEventEmitter.on('onUserKeyPoints', (data) => {console.log(data);})
+   ```
+
+
 ----
 
 
