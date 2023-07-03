@@ -5,6 +5,7 @@ const ReactDOM = require("react-dom");
 import {
   useXtraVisionAssessmentContext,
   XtraVisionAssessmentProvider as AssessmentProvider,
+  XtraVisionEventEmitter
 } from "@xtravision/xtravision-react";
 
 const AppContainer = ({
@@ -135,4 +136,5 @@ export {
   useXtraVisionAssessmentContext,
   React,
   ReactDOM,
+  XtraVisionEventEmitter
 };
