@@ -33,11 +33,15 @@
     </div>
   </body>
 
+  <!-- <script src="https://cdn.jsdelivr.net/gh/xtravision-ai/xtravision-js-SDK@2.1.0/xtravision-js-sdk.min.js"> </script> -->
   <script src="xtravision-js-sdk.min.js"></script>
   <script>
     const React = XtraVision.React;
     const ReactDOM = XtraVision.ReactDOM;
     const XtraVisionAssessmentPage = XtraVision.AssessmentPage;
+
+    const XtraVisionEventEmitter = XtraVision.XtraVisionEventEmitter
+    XtraVisionEventEmitter.on('onUserKeyPoints', (data) => {console.log(data);})
 
     const searchParams = new URLSearchParams(window.location.search);
     let isSkeletonEnabled =
@@ -53,6 +57,7 @@
     assessment_config = {
       reps_threshold: 5,
       grace_time_threshold: 20,
+      sets_threshold: -1 // -1 is default value & indicates disabled. 
     };
 
     const onServerResponse = function (response) {

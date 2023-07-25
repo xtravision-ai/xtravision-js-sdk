@@ -1,7 +1,7 @@
 {
   "name": "demo-marko-app",
   "description": "The default Marko starter app",
-  "version": "2.1.0",
+  "version": "2.4.0",
   "type": "module",
   "dependencies": {
     "@marko/vite": "^2.3.14",
