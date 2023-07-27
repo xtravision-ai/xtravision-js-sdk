@@ -20,7 +20,7 @@
   },
   "IMP Comment ====>>": " Below dependency use for development purpose at local-end, where `xtravision-react` hosted at local-end below defined path.",
   "___dependencies": {
-    "@xtravision/xtravision-react": "file:./../github/xtravision-react/dist/cjs",
+    "@xtravision/xtravision-react": "file:./../xtravision-react/dist/cjs",
     "@mediapipe/camera_utils": "^0.3.1640029074",
     "@mediapipe/pose": "^0.5.1635988162",
     "lodash": "^4.17.20",

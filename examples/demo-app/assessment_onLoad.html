@@ -40,10 +40,11 @@
     XtraVisionEventEmitter.on('onUserKeyPoints', (data) => {console.log(data);})
 
     const searchParams = new URLSearchParams(window.location.search);
-    let isSkeletonEnabled =
+    let isSkeletonEnabled = 
       (searchParams.get("isSkeletonEnabled") == "true" ? true : false) ?? false;
     let assessment_name = searchParams.get("assessment") ?? "SQUATS";
     let auth_token = searchParams.get("authToken");
+    let serverEndpoint = searchParams.get("serverEndpoint") ?? "production";
     
     // Put assessment specific configuration. Check documentation for further details
     let assessment_config = {};
@@ -102,6 +103,7 @@
       videoElementCSS,
       canvasElementCSS,
       isSkeletonEnabled,
+      serverEndpoint,
     };
 
     const props = {
