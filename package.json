@@ -16,7 +16,7 @@
     "start:demo": "yarn install && yarn build:sdk && cd examples/demo-app && yarn install && yarn start"
   },
   "dependencies": {
-    "@xtravision/xtravision-react": "^2.3.0"
+    "@xtravision/xtravision-react": "^2.4.0"
   },
   "IMP Comment ====>>": " Below dependency use for development purpose at local-end, where `xtravision-react` hosted at local-end below defined path.",
   "___dependencies": {

@@ -2246,10 +2246,10 @@
     "@webassemblyjs/ast" "1.11.6"
     "@xtuc/long" "4.2.2"
 
-"@xtravision/xtravision-react@^2.3.0":
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/@xtravision/xtravision-react/-/xtravision-react-2.3.2.tgz#259cc8ac679471ac637f5e414c53b1469c10d80e"
-  integrity sha512-C1j5BF21JMQCkUbenhbxfIbYhECQbgEe9P/7GZEW3A3XG8z5M5UAOLNrtilppP1JnOprZsFPSLtTYdr+F4xDDQ==
+"@xtravision/xtravision-react@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@xtravision/xtravision-react/-/xtravision-react-2.4.0.tgz#dac6d98f43bf1e34414f25d90681fc017ff0bf1a"
+  integrity sha512-jdq30f4jG7JW/ZrUDksGkj8YegB7fpa/KOAQaYHj5WBLJae6ddhZYjSfJ5d/iJva4iBkqSkprZ8fuFEFtkCAnw==
   dependencies:
     "@mediapipe/camera_utils" "^0.3.1640029074"
     "@mediapipe/pose" "^0.5.1635988162"
