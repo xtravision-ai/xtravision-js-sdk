@@ -1,6 +1,6 @@
 {
   "name": "@xtravision/js-sdk",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "Comment": "Don't, Change main and files key. These are using in npm module.",
   "main": "xtravision-js-sdk.js",
   "files": [
@@ -16,11 +16,11 @@
     "start:demo": "yarn install && yarn build:sdk && cd examples/demo-app && yarn install && yarn start"
   },
   "dependencies": {
-    "@xtravision/xtravision-react": "^2.3.0"
+    "@xtravision/xtravision-react": "^2.4.0"
   },
   "IMP Comment ====>>": " Below dependency use for development purpose at local-end, where `xtravision-react` hosted at local-end below defined path.",
   "___dependencies": {
-    "@xtravision/xtravision-react": "file:./../github/xtravision-react/dist/cjs",
+    "@xtravision/xtravision-react": "file:./../xtravision-react/dist/cjs",
     "@mediapipe/camera_utils": "^0.3.1640029074",
     "@mediapipe/pose": "^0.5.1635988162",
     "lodash": "^4.17.20",

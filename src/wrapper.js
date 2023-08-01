@@ -119,6 +119,7 @@ const AssessmentPage = ({ connectionData, requestData, libData }) => {
       canvasElementRef={canvasRef}
       connectionData={connectionData}
       requestData={requestData}
+      libData={libData}
     >
       <AppContainer
         videoElementRef={videoElementRef}
